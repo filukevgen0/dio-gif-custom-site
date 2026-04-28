@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Але це був я, ДІО!</title>
+
+  <style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    overflow: hidden;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  video {
+    width: min(90vw, 640px);
+    max-height: 80vh;
+    object-fit: contain;
+    background: black;
+    display: block;
+    border-radius: 16px;
+  }
+</style>
+</head>
+<body>
+  <video
+    src="assets/dio.mp4"
+    autoplay
+    loop
+    muted
+    playsinline
+  ></video>
+
+  <audio
+    id="music"
+    src="assets/music.mp3"
+    autoplay
+    loop
+  ></audio>
+
+  <script>
+    const music = document.getElementById("music");
+    music.volume = 0.8;
+
+    window.addEventListener("load", async () => {
+      try {
+        await music.play();
+      } catch (e) {
+        console.log("Music autoplay blocked:", e);
+      }
+    });
+  </script>
+</body>
+</html>
