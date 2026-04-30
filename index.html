@@ -566,8 +566,8 @@
           playsinline
           preload="auto"
         >
-          <source src="assets/dio.webm?v=4" type="video/webm" />
-          <source src="assets/dio.mp4?v=4" type="video/mp4" />
+          <source src="assets/dio.webm?v=5" type="video/webm" />
+          <source src="assets/dio.mp4?v=5" type="video/mp4" />
           Твій браузер не підтримує відео.
         </video>
 
@@ -727,6 +727,31 @@
       return new Promise(resolve => setTimeout(resolve, ms));
     }
 
+    function scrollToActiveContent() {
+      const continueArea = document.getElementById("continueArea");
+      const sectionOutput = document.getElementById("sectionOutput");
+      const fixedHeaderOutput = document.getElementById("fixedHeaderOutput");
+
+      let target = sectionOutput;
+
+      if (continueArea && !continueArea.classList.contains("hidden")) {
+        target = continueArea;
+      }
+
+      if (!target) {
+        target = fixedHeaderOutput;
+      }
+
+      if (!target) {
+        return;
+      }
+
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "end"
+      });
+    }
+
     function appendLineTo(targetId, text, cls) {
       const target = document.getElementById(targetId);
 
@@ -738,6 +763,20 @@
       line.className = "line " + (cls || "");
       line.textContent = text;
       target.appendChild(line);
+
+      if (targetId === "sectionOutput") {
+        line.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+      }
+
+      if (targetId === "fixedHeaderOutput") {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "end"
+        });
+      }
     }
 
     function clearSectionOutput() {
@@ -819,6 +858,8 @@
 
         continueButton.textContent = buttonText;
         continueArea.classList.remove("hidden");
+
+        scrollToActiveContent();
 
         continueButton.onclick = () => {
           continueArea.classList.add("hidden");
