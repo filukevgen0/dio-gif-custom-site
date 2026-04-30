@@ -566,8 +566,8 @@
           playsinline
           preload="auto"
         >
-          <source src="assets/dio.webm?v=5" type="video/webm" />
-          <source src="assets/dio.mp4?v=5" type="video/mp4" />
+          <source src="assets/dio.webm?v=6" type="video/webm" />
+          <source src="assets/dio.mp4?v=6" type="video/mp4" />
           Твій браузер не підтримує відео.
         </video>
 
@@ -708,20 +708,13 @@
           ["В тобі є дуже сильна штука: ти можеш бути добрим, але не мʼякотілим; прямим, але не пустим критиканом; спокійним, але не байдужим.", "", 1560],
           ["І це, чесно, дуже пасує людині, яка працює з дітьми. Бо там треба не просто «бути добрим», а мати нерви, серце і голову на місці.", "", 1560],
           ["Бажаю тобі, аби в житті було більше нормальних людей, менше дурної фігні, більше сил, грошей, спокою і моментів, де можна сказати: «йо, та я файно живу».", "", 1600],
-          ["Залишайся собою. Бо твій головний Stand — це не «DIAMOND CAVE», а те, що ти реально нормальна людина.", "stand", 1520]
+          ["Залишайся собою. Бо твій головний Stand — це не «DIAMOND CAVE», а те, що ти реально крутий кєнтік!!!.", "stand", 1520]
         ]
       }
     ];
 
-    const finalSectionLines = [
-      ["Фінальна класифікація:", "h", 840],
-      ["LOYAL ALLY — НЕ ПРОЇБАТИ", "danger", 1520],
-      ["ФІНАЛЬНА ПЕРЕДАЧА ГОТУЄТЬСЯ...", "h", 1520],
-      ["24 роки. To Be Continued...", "sfx", 1800]
-    ];
-
     let alreadyStarted = false;
-    const TEXT_DELAY_MULTIPLIER = 0.75;
+    const TEXT_DELAY_MULTIPLIER = 1.4;
 
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
@@ -887,21 +880,21 @@
       }
 
       clearSectionOutput();
-      await renderLines("sectionOutput", finalSectionLines);
 
       document.getElementById("status").textContent = "STATUS: FINAL TRANSMISSION UNLOCKED";
 
       await waitForContinue("ОТРИМАТИ ФІНАЛЬНУ ПЕРЕДАЧУ ゴ");
 
-      document.getElementById("finalBlock").classList.remove("hidden");
+      const finalBlock = document.getElementById("finalBlock");
+      finalBlock.classList.remove("hidden");
 
       startDioVideo();
 
-      await sleep(900);
+      await sleep(250);
 
-      window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: "smooth"
+      finalBlock.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
       });
     }
 
