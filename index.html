@@ -3,61 +3,912 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Але це був я, ДІО!</title>
+
+  <title>Speedwagon Foundation — Birthday Dossier</title>
 
   <style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
-    overflow: hidden;
+  * {
+    box-sizing: border-box;
+  }
+
+  :root {
+    --gold: #ffd54a;
+    --pink: #ff2bd6;
+    --violet: #7b2cff;
+    --cyan: #26f7ff;
+    --red: #ff304f;
+    --paper: #fff2c7;
   }
 
   body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin: 0;
+    min-height: 100vh;
+    color: var(--paper);
+    font-family: "Arial Black", Impact, system-ui, sans-serif;
+    overflow-x: hidden;
+    background:
+      radial-gradient(circle at 15% 15%, rgba(255, 43, 214, .45), transparent 24%),
+      radial-gradient(circle at 85% 18%, rgba(38, 247, 255, .32), transparent 22%),
+      radial-gradient(circle at 50% 110%, rgba(255, 213, 74, .22), transparent 32%),
+      linear-gradient(135deg, #100019 0%, #2b0044 35%, #09000f 65%, #1d001e 100%);
   }
 
-  video {
-    width: min(90vw, 640px);
-    max-height: 80vh;
-    object-fit: contain;
-    background: black;
+  body::before {
+    content: "";
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    background:
+      repeating-linear-gradient(45deg, rgba(255,255,255,.045) 0 3px, transparent 3px 12px),
+      repeating-linear-gradient(-45deg, rgba(255,43,214,.05) 0 2px, transparent 2px 18px);
+    mix-blend-mode: screen;
+    z-index: 1;
+  }
+
+  .burst {
+    position: fixed;
+    inset: -18vmax;
+    pointer-events: none;
+    z-index: 0;
+    background:
+      conic-gradient(
+        from 12deg,
+        rgba(255,213,74,.18) 0deg 7deg,
+        transparent 7deg 15deg,
+        rgba(255,43,214,.14) 15deg 21deg,
+        transparent 21deg 31deg,
+        rgba(38,247,255,.13) 31deg 38deg,
+        transparent 38deg 50deg
+      );
+    animation: spin 36s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .menacing {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    opacity: .18;
+    overflow: hidden;
+  }
+
+  .menacing span {
+    position: absolute;
+    font-size: clamp(36px, 10vw, 132px);
+    color: var(--pink);
+    text-shadow: 0 0 12px var(--pink), 0 0 30px var(--violet);
+    animation: float 5s ease-in-out infinite alternate;
+    transform: rotate(-12deg);
+  }
+
+  .menacing span:nth-child(1) {
+    left: 4%;
+    top: 8%;
+  }
+
+  .menacing span:nth-child(2) {
+    right: 5%;
+    top: 22%;
+    animation-delay: .8s;
+    transform: rotate(10deg);
+  }
+
+  .menacing span:nth-child(3) {
+    left: 8%;
+    bottom: 12%;
+    animation-delay: 1.4s;
+    transform: rotate(8deg);
+  }
+
+  .menacing span:nth-child(4) {
+    right: 10%;
+    bottom: 18%;
+    animation-delay: 2s;
+    transform: rotate(-8deg);
+  }
+
+  @keyframes float {
+    from {
+      translate: 0 0;
+      opacity: .10;
+    }
+
+    to {
+      translate: 0 -24px;
+      opacity: .26;
+    }
+  }
+
+  .scan {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,.05) 0 1px,
+      transparent 1px 5px
+    );
+    z-index: 4;
+  }
+
+  .terminal {
+    position: relative;
+    z-index: 5;
+    width: min(1080px, calc(100% - 28px));
+    margin: 0 auto;
+    padding: 32px 0;
+  }
+
+  .panel {
+    position: relative;
+    min-height: calc(100vh - 64px);
+    padding: clamp(20px, 4vw, 44px);
+    background:
+      linear-gradient(135deg, rgba(8,0,14,.92), rgba(40,0,70,.86)),
+      repeating-linear-gradient(90deg, transparent 0 28px, rgba(255,255,255,.035) 28px 30px);
+    border: 3px solid var(--gold);
+    box-shadow:
+      10px 10px 0 rgba(255,43,214,.65),
+      -10px -10px 0 rgba(38,247,255,.55),
+      0 0 45px rgba(255,213,74,.28),
+      inset 0 0 35px rgba(255,43,214,.16);
+    overflow: visible;
+  }
+
+  .panel::after {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border: 1px dashed rgba(255,213,74,.42);
+    pointer-events: none;
+  }
+
+  .start {
+    display: grid;
+    place-items: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .start-inner {
+    max-width: 900px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 10px 18px;
+    margin-bottom: 20px;
+    color: #07000b;
+    background: var(--gold);
+    border: 2px solid #fff;
+    transform: skew(-12deg);
+    box-shadow: 7px 7px 0 var(--pink);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0;
+    line-height: .92;
+    font-size: clamp(48px, 10vw, 128px);
+    color: #fff;
+    text-transform: uppercase;
+    -webkit-text-stroke: 2px #1b001f;
+    text-shadow:
+      5px 5px 0 var(--pink),
+      10px 10px 0 var(--violet),
+      0 0 25px rgba(255,255,255,.8);
+  }
+
+  .subtitle {
+    margin: 24px auto 0;
+    max-width: 760px;
+    font-family: "Courier New", monospace;
+    font-size: clamp(16px, 2.2vw, 22px);
+    line-height: 1.55;
+    text-shadow: 0 0 10px rgba(38,247,255,.55);
+  }
+
+  .classified {
+    display: inline-block;
+    margin-top: 22px;
+    padding: 10px 16px;
+    color: #fff;
+    border: 2px solid var(--red);
+    background: rgba(255,48,79,.18);
+    transform: rotate(-2deg);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  button {
+    position: relative;
+    z-index: 3;
+    margin-top: 34px;
+    padding: 18px 26px;
+    border: 3px solid #fff;
+    background:
+      linear-gradient(135deg, var(--gold) 0 45%, var(--pink) 45% 100%);
+    color: #170018;
+    font-family: "Arial Black", Impact, sans-serif;
+    font-size: clamp(16px, 2vw, 22px);
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 9px 9px 0 var(--cyan), 0 0 26px rgba(255,213,74,.5);
+    transform: skew(-8deg);
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+
+  button:hover {
+    transform: skew(-8deg) translateY(-4px) scale(1.02);
+    box-shadow: 12px 12px 0 var(--cyan), 0 0 36px rgba(255,43,214,.7);
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  .top {
+    position: relative;
+    z-index: 9;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding: 14px 16px;
+    color: #07000b;
+    background: linear-gradient(90deg, var(--gold), #fff0a2);
+    border: 2px solid #fff;
+    box-shadow: 6px 6px 0 var(--pink);
+    font-family: "Courier New", monospace;
+    font-weight: 900;
+  }
+
+  .output {
+    position: relative;
+    z-index: 2;
+    white-space: pre-wrap;
+    line-height: 1.65;
+    font-family: "Courier New", monospace;
+    font-weight: 700;
+    font-size: clamp(15px, 2vw, 18px);
+  }
+
+  .fixed-header-output {
+    position: relative;
+    z-index: 8;
+    padding: 18px;
+    margin-bottom: 24px;
+    border: 2px solid rgba(255, 213, 74, .65);
+    background:
+      linear-gradient(135deg, rgba(8,0,14,.96), rgba(40,0,70,.92));
+    box-shadow:
+      6px 6px 0 rgba(255,43,214,.45),
+      0 0 30px rgba(255,213,74,.18);
+    max-height: none;
+    overflow: visible;
+  }
+
+  .section-output {
+    min-height: 360px;
+    padding: 18px;
+    border: 1px dashed rgba(38, 247, 255, .45);
+    background: rgba(0, 0, 0, .22);
+  }
+
+  .section-output.replacing {
+    animation: sectionReplace .25s ease;
+  }
+
+  @keyframes sectionReplace {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+      filter: blur(2px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  .line {
+    margin-bottom: 12px;
+    opacity: 0;
+    animation: reveal .25s forwards;
+    text-shadow: 0 0 10px rgba(0,0,0,.8);
+  }
+
+  .h {
+    margin-top: 14px;
+    color: var(--gold);
+    font-family: "Arial Black", Impact, sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 0 #2b0030, 0 0 18px rgba(255,213,74,.7);
+  }
+
+  .stand {
+    color: var(--cyan);
+    font-family: "Arial Black", Impact, sans-serif;
+    text-shadow: 3px 3px 0 var(--violet), 0 0 16px rgba(38,247,255,.85);
+  }
+
+  .danger {
+    color: #ff6f87;
+    font-family: "Arial Black", Impact, sans-serif;
+    text-shadow: 3px 3px 0 #3b000a, 0 0 16px rgba(255,48,79,.7);
+  }
+
+  .sfx {
+    color: var(--pink);
+    font-size: 1.25em;
+    font-family: "Arial Black", Impact, sans-serif;
+    letter-spacing: 3px;
+    text-shadow: 3px 3px 0 #19001e, 0 0 18px rgba(255,43,214,.85);
+  }
+
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      transform: translateX(-10px) scale(.99);
+      filter: blur(2px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+      filter: blur(0);
+    }
+  }
+
+  .continue-area {
+    position: relative;
+    z-index: 3;
+    margin: 34px 0 18px;
+    text-align: center;
+  }
+
+  .continue-area button {
+    margin-top: 0;
+    animation: pulseDecrypt 1.4s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulseDecrypt {
+    from {
+      filter: brightness(1);
+      box-shadow: 9px 9px 0 var(--cyan), 0 0 20px rgba(255,213,74,.45);
+    }
+
+    to {
+      filter: brightness(1.18);
+      box-shadow: 12px 12px 0 var(--cyan), 0 0 38px rgba(255,43,214,.75);
+    }
+  }
+
+  .final {
+    position: relative;
+    z-index: 2;
+    margin-top: 38px;
+    padding: clamp(22px, 4vw, 38px);
+    text-align: center;
+    background:
+      radial-gradient(circle at center, rgba(255,43,214,.32), transparent 42%),
+      linear-gradient(135deg, rgba(7,0,11,.94), rgba(55,0,70,.92));
+    border: 3px solid var(--gold);
+    box-shadow:
+      8px 8px 0 var(--cyan),
+      -8px -8px 0 var(--pink),
+      inset 0 0 35px rgba(255,213,74,.14);
+  }
+
+  .final h2 {
+    margin-top: 0;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-size: clamp(26px, 5vw, 56px);
+    text-shadow: 4px 4px 0 #270030, 0 0 20px rgba(255,213,74,.75);
+  }
+
+  .birthday {
+    font-size: clamp(34px, 8vw, 92px);
+    line-height: .95;
+    color: #fff;
+    -webkit-text-stroke: 2px #23002c;
+    text-shadow:
+      5px 5px 0 var(--pink),
+      10px 10px 0 var(--violet),
+      0 0 22px rgba(255,255,255,.6);
+    margin: 18px 0 28px;
+    text-transform: uppercase;
+  }
+
+  .jojo-tbc {
+    opacity: 0;
+    transform: translateX(-120%) skew(-8deg);
+    animation: tbcEnter 1.8s cubic-bezier(.12,.75,.22,1.05) forwards;
+    display: inline-block;
+    padding: 8px 18px;
+    background: linear-gradient(90deg, rgba(255,213,74,.12), rgba(255,43,214,.08));
+    border-left: 18px solid #fff;
+  }
+
+  @keyframes tbcEnter {
+    0% {
+      opacity: 0;
+      transform: translateX(-120%) skew(-8deg);
+    }
+
+    72% {
+      opacity: 1;
+      transform: translateX(8%) skew(-8deg);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0) skew(-8deg);
+    }
+  }
+
+  .dio-video {
+    width: min(560px, 100%);
+    max-height: 360px;
+    object-fit: cover;
+    margin: 0 auto;
     display: block;
-    border-radius: 16px;
+    border: 3px solid #fff;
+    box-shadow: 10px 10px 0 var(--gold), 0 0 35px rgba(255,43,214,.55);
+    background: #130019;
+  }
+
+  .placeholder {
+    width: min(560px, 100%);
+    min-height: 310px;
+    margin: 0 auto;
+    border: 3px solid #fff;
+    box-shadow: 10px 10px 0 var(--gold), 0 0 35px rgba(255,43,214,.55);
+    display: grid;
+    place-items: center;
+    background:
+      radial-gradient(circle at center, rgba(255,213,74,.38), transparent 40%),
+      linear-gradient(135deg, #2b0044, #08000c);
+    color: var(--gold);
+    font-size: clamp(36px, 8vw, 88px);
+    letter-spacing: 4px;
+    text-shadow: 4px 4px 0 var(--pink), 0 0 28px var(--violet);
+  }
+
+  .stamp {
+    position: absolute;
+    right: clamp(12px, 4vw, 40px);
+    top: clamp(12px, 4vw, 40px);
+    z-index: 2;
+    padding: 10px 14px;
+    color: #07000b;
+    background: var(--cyan);
+    border: 2px solid #fff;
+    box-shadow: 5px 5px 0 var(--pink);
+    transform: rotate(8deg);
+    font-size: clamp(14px, 2vw, 22px);
+  }
+
+  @media (max-width: 640px) {
+    .terminal {
+      width: min(100% - 16px, 1080px);
+      padding: 8px 0;
+    }
+
+    .panel {
+      min-height: calc(100vh - 16px);
+      padding: 18px;
+    }
+
+    .top {
+      flex-direction: column;
+    }
+
+    .fixed-header-output {
+      position: relative;
+      top: auto;
+      max-height: none;
+      overflow: visible;
+    }
+
+    .section-output {
+      min-height: 300px;
+    }
   }
 </style>
 </head>
-<body>
-  <video
-    src="assets/dio.mp4"
-    autoplay
-    loop
-    muted
-    playsinline
-  ></video>
 
-  <audio
-    id="music"
-    src="assets/music.mp3"
-    autoplay
-    loop
-  ></audio>
+<body>
+  <audio id="bgMusic" loop preload="auto">
+    <source src="assets/pillar_man_theme.mp3" type="audio/mpeg" />
+  </audio>
+
+  <div class="burst"></div>
+
+  <div class="menacing">
+    <span>ゴゴゴ</span>
+    <span>ゴゴゴ</span>
+    <span>ドドド</span>
+    <span>ゴゴゴ</span>
+  </div>
+
+  <div class="scan"></div>
+
+  <main class="terminal">
+    <section id="startScreen" class="panel start">
+      <div class="stamp">STAND BY...</div>
+
+      <div class="start-inner">
+        <div class="badge">Speedwagon Foundation</div>
+
+        <h1>Confidential<br>File</h1>
+
+        <p class="classified">
+          Birthday Incident Archive // Access Restricted
+        </p>
+
+        <p class="subtitle">
+          Виявлено підозріло високий рівень дружби, прямоти та фрази
+          «Пацани, це Діамантова Пічєра».
+          Запускаємо протокол святкового розсекречення.
+        </p>
+
+        <button type="button" onclick="startDossier()">
+          ゴ РОЗПОЧАТИ РОЗШИФРУВАННЯ ゴ
+        </button>
+      </div>
+    </section>
+
+    <section id="fileScreen" class="panel hidden">
+      <div class="top">
+        <span>SPW FOUNDATION // YURA'S BIZARRE BIRTHDAY</span>
+        <span id="status">STATUS: CONNECTING...</span>
+      </div>
+
+      <div id="fixedHeaderOutput" class="output fixed-header-output"></div>
+
+      <div id="sectionOutput" class="output section-output"></div>
+
+      <div id="continueArea" class="continue-area hidden">
+        <button id="continueButton" type="button">
+          CONTINUE DECRYPTING ゴ
+        </button>
+      </div>
+
+      <div id="finalBlock" class="final hidden">
+        <h2>Фінальна передача розблокована</h2>
+
+        <p class="sfx">ゴゴゴゴゴゴゴゴゴゴ</p>
+
+        <p>Святковий протокол завершено.</p>
+
+        <p class="birthday jojo-tbc">
+          24 роки,<br>To Be Continued...
+        </p>
+
+        <video
+          id="dioVideo"
+          class="dio-video"
+          muted
+          loop
+          playsinline
+          preload="auto"
+        >
+          <source src="assets/dio.webm" type="video/webm" />
+          <source src="assets/dio.mp4" type="video/mp4" />
+          Твій браузер не підтримує відео.
+        </video>
+
+        <div id="videoPlaceholder" class="placeholder hidden">
+          DIO VIDEO
+        </div>
+
+        <p style="font-family:'Courier New',monospace;margin-top:28px">
+          З днем народження, Юра. Далі — тільки сильніші арки, кращі люди поруч і менше NPC в сюжеті.
+        </p>
+      </div>
+    </section>
+  </main>
 
   <script>
-    const music = document.getElementById("music");
-    music.volume = 0.8;
+    const fixedHeaderLines = [
+      ["SPEEDWAGON FOUNDATION — CONFIDENTIAL FILE", "h", 680],
+      ["BIRTHDAY INCIDENT ARCHIVE // CASE: YURA", "h", 680],
+      ["ゴゴゴゴゴゴゴゴゴゴ", "sfx", 960],
+      ["РІВЕНЬ ДОСТУПУ: ТІЛЬКИ ДЛЯ СВОЇХ", "danger", 680],
+      ["СТАТУС ДОКУМЕНТА: РОЗСЕКРЕЧЕНО НА ЧЕСТЬ ДНЯ НАРОДЖЕННЯ", "h", 840],
+      ["СУБʼЄКТ: Юра", "h", 960],
+      ["ВІК: 23 роки. І це вже не демоверсія життя.", "stand", 1120],
+      ["КЛАСИФІКАЦІЯ: вірний друг / чесний критик / людина, яка скаже як є", "", 1040],
+      ["АСОЦІЙОВАНА СУТНІСТЬ: 「DIAMOND CAVE」", "stand", 1000],
+      ["ЛОКАЛІЗОВАНА НАЗВА: 「Діамантова Пічєра」", "stand", 1040],
+      ["РІВЕНЬ ЗАГРОЗИ ДЛЯ ФАЛЬШИВИХ ЛЮДЕЙ: HIGH", "danger", 1240],
+      ["MENACING AURA DETECTED: ゴゴゴ", "sfx", 1240]
+    ];
 
-    window.addEventListener("load", async () => {
+    const dossierSections = [
+      {
+        title: "I. ІДЕНТИФІКАЦІЯ СУБʼЄКТА",
+        lines: [
+          ["I. ІДЕНТИФІКАЦІЯ СУБʼЄКТА", "h", 680],
+          ["Імʼя: Юра", "", 520],
+          ["Професійна класифікація: дитячий психолог / спеціаліст по боротьбі з малими Stand-юзерами у стані хаосу", "stand", 1040],
+          ["Відомий псевдонім: Хранитель Діамантової Пічєри", "", 900],
+          ["Додатковий псевдонім Фонду: терапевт, який бачив дитячі істерики, батьківські пояснення і все ще не став головним злодієм арки", "", 1240],
+          ["Основна фраза, зафіксована Фондом:", "", 600],
+          ["«Пацани, це ж Діамантова Пічєра.»", "stand", 1520],
+          ["Після вимови цієї фрази атмосфера в кімнаті стає на 200% епічнішою, а десь у фоні Джозеф Джостар кричить: «OH MY GOD!»", "sfx", 1400],
+          ["Побічний ефект: атмосфера стає настільки серйозною, що навіть найтупіша ситуація починає виглядати як важливий життєвий урок.", "", 1240],
+          ["Фонд також зафіксував підозрілу здатність: Юра може сказати одну чесну фразу — і людина проходить через усі 5 стадій прийняття.", "danger", 1400]
+        ]
+      },
+      {
+        title: "II. ПСИХОЛОГІЧНИЙ ПРОФІЛЬ",
+        lines: [
+          ["II. ПСИХОЛОГІЧНИЙ ПРОФІЛЬ", "h", 680],
+          ["Юра класифікується як союзник високої довіри та противник високого ризику для будь-якої фальші.", "", 1080],
+          ["Ключові риси: справедливий, добрий, прямий, вірний.", "", 920],
+          ["Він не з тих людей, які будуть робити вигляд, що все нормально, якщо все не нормально.", "", 1040],
+          ["Він скаже прямо.", "danger", 1400],
+          ["Може боляче? Так.", "", 720],
+          ["Зате чесно? Абсолютно.", "h", 1240],
+          ["У термінах Фонду: це не агресія, це терапевтична інтервенція з елементами «Yare Yare Daze».", "stand", 1240],
+          ["Якщо в кімнаті починається хаос, Юра не панікує. Він дивиться на ситуацію так, ніби вже чув це від трьох дітей, двох батьків і одного дуже втомленого вчителя.", "", 1480],
+          ["Його психологічна суперсила — бачити, де справжня проблема, а де люди просто роблять херню і називають це «ну я такий характер маю».", "danger", 1480],
+          ["І саме тому поруч із ним не треба грати роль. Можна бути собою.", "", 1240],
+          ["Навіть якщо ти поводишся як NPC з побічного квесту — Юра все одно спробує розібратись, а не одразу натисне «skip dialogue».", "sfx", 1400]
+        ]
+      },
+      {
+        title: "III. СЛАБКОСТІ СУБʼЄКТА",
+        lines: [
+          ["III. СЛАБКОСТІ СУБʼЄКТА", "h", 680],
+          ["Офіційні слабкості: не виявлено. Субʼєкт занадто добре шифрується.", "", 1040],
+          ["Неофіційна версія Фонду: Юра може занадто серйозно ставитися до кривої логіки, тупих рішень і людей, які говорять фігню з упевненим лицем.", "danger", 1400],
+          ["Додаткова підозра: фраза «та все нормально» викликає у нього професійний інтерес, бо зазвичай після неї починається не нормально, а цілий сезон психологічного розбору.", "sfx", 1400],
+          ["Примітка Фонду: він зміг перемогти Hol Horse'а — дав йому скурити цигарку. У документах Hol Horse проходить як «Очко Лошади». Походження класифікації засекречене, але всі все поняли.", "sfx", 1400],
+          ["Бо, як казали древні мудреці, «крапля нікотину коня вбиває», а якщо в людині хоча б 2% коня — Фонд рекомендує застосувати таку зброю як «Sigoretka».", "stand", 1520],
+          ["Ймовірна слабкість №2: коли хтось дуже впевнено несе дурню, Юра може активувати внутрішнього Джотаро і подумки сказати: «Yare Yare Daze».", "", 1320],
+          ["Ймовірна слабкість №3: якщо план ламається, десь у голові вмикається Joseph Joestar mode: «OH NOOO!» — але зовні все ще виглядає так, ніби ситуація під контролем.", "", 1400],
+          ["Ймовірна слабкість №4: якщо хтось кричить «WRYYYY» без причини, Юра спершу оцінить емоційний стан, а вже потім вирішить, чи викликати екзорциста або брати на удушаючий.", "danger", 1480],
+          ["Фінальний висновок: слабкість не знайдена. Але якщо в кімнаті стало занадто тихо — можливо, Юра вже готує фразу, після якої всі різко почнуть переосмислювати свої рішення.", "stand", 1240]
+        ]
+      },
+      {
+        title: "IV. STAND PROFILE",
+        lines: [
+          ["IV. STAND PROFILE", "h", 680],
+          ["Stand Name: 「DIAMOND CAVE」", "stand", 960],
+          ["Локальна назва: 「Діамантова Пічєра」", "stand", 960],
+          ["Тип: ближня дистанція / захисний силовий Stand / детектор фальші / всім кінець", "", 960],
+          ["Музичний резонанс: тема Піларменів", "", 1000],
+          ["Аура: древня, важка, абсурдно драматична. Ваму мовчить. AC/DC нервує. Карс — мудак.", "", 1040],
+          ["Pillar Men Protocol: AWAKENED", "sfx", 1240]
+        ]
+      },
+      {
+        title: "V. ЗДІБНІСТЬ STANDʼА — «Незламний Психолог»",
+        lines: [
+          ["V. ЗДІБНІСТЬ STANDʼА — «Незламний Психолог»", "h", 1000],
+          ["「DIAMOND CAVE」 створює навколо пацієнта або учня невидиму зону тиску.", "", 1040],
+          ["Усередині цієї зони напиздіти стає важче.", "", 880],
+          ["Впевненість гівнюка тріскається.", "", 880],
+          ["Приховані наміри стають очевидними.", "", 880],
+          ["Слабкі аргументи руйнуються під власною вагою.", "danger", 1240],
+          ["Цей Stand атакує не тіло, а відмазки, самообман і бажання зробити вигляд, що «то не я».", "", 880],
+          ["Він атакує брехню і погано сформульовані пояснення.", "danger", 1520],
+          ["ORA? Ні. MUDA? Ні. Тут працює: «Ну шо ти, Чмелю Моховий?»", "sfx", 1400]
+        ]
+      },
+      {
+        title: "VI. СПЕЦІАЛЬНА ТЕХНІКА",
+        lines: [
+          ["VI. СПЕЦІАЛЬНА ТЕХНІКА", "h", 680],
+          ["Назва: «Therapeutic Diamond Intervention»", "stand", 920],
+          ["Фраза активації:", "", 600],
+          ["«Пацани, це Діамантова Пічєра.»", "stand", 1520],
+          ["Фаза 1 — Контакт: Юра дивиться так спокійно, що навіть хаос починає шукати безпечну привʼязаність.", "", 1040],
+          ["Фаза 2 — Діагностика: за 30 секунд стає ясно, де реальна проблема, а де люди просто роблять якусь фігню і називають це «характером».", "", 1240],
+          ["Фаза 3 — Інтервенція: Юра каже прямо, але так, що після цього хочеться не ображатись, а задуматись над своїм життям.", "danger", 1320],
+          ["Фаза 4 — Пічєрний спокій: «та нич, розберемеся», і ситуація магічно стає менш йобнутою.", "stand", 1440],
+          ["Yare Yare Daze... терапевтичний контакт встановлено.", "sfx", 1240]
+        ]
+      },
+      {
+        title: "VII. ХАРАКТЕРИСТИКИ STANDʼА",
+        lines: [
+          ["VII. ХАРАКТЕРИСТИКИ STANDʼА", "h", 680],
+          ["Емпатія: A", "", 360],
+          ["Терпіння до дитячого хаосу: A", "", 520],
+          ["Вміння сказати правду без зайвої херні: B", "", 520],
+          ["Стійкість до дивних батьківських аргументів: A", "", 560],
+          ["Точність психологічного попадання: B", "", 520],
+          ["Потенціал розвитку: A", "stand", 960]
+        ]
+      },
+      {
+        title: "VIII. ОСОБИСТЕ ПОВІДОМЛЕННЯ",
+        lines: [
+          ["VIII. ОСОБИСТЕ ПОВІДОМЛЕННЯ", "h", 680],
+          ["Юра, з днем народження.", "stand", 1040],
+          ["Без пафосу і без протоколу на 20 сторінок: я реально радий, що в моєму житті є такий друг.", "", 1240],
+          ["Ти з тих людей, з ким можна нормально поговорити, поржати, посперечатись і при цьому знати, що все буде по-чесному.", "", 1400],
+          ["В тобі є дуже сильна штука: ти можеш бути добрим, але не мʼякотілим; прямим, але не пустим критиканом; спокійним, але не байдужим.", "", 1560],
+          ["І це, чесно, дуже пасує людині, яка працює з дітьми. Бо там треба не просто «бути добрим», а мати нерви, серце і голову на місці.", "", 1560],
+          ["Бажаю тобі, аби в житті було більше нормальних людей, менше дурної фігні, більше сил, грошей, спокою і моментів, де можна сказати: «йо, та я файно живу».", "", 1600],
+          ["Залишайся собою. Бо твій головний Stand — це не «DIAMOND CAVE», а те, що ти реально нормальна людина.", "stand", 1520]
+        ]
+      }
+    ];
+
+    const finalSectionLines = [
+      ["Фінальна класифікація:", "h", 840],
+      ["LOYAL ALLY — НЕ ПРОЇБАТИ", "danger", 1520],
+      ["ФІНАЛЬНА ПЕРЕДАЧА ГОТУЄТЬСЯ...", "h", 1520],
+      ["24 роки. To Be Continued...", "sfx", 1800]
+    ];
+
+    let alreadyStarted = false;
+    const TEXT_DELAY_MULTIPLIER = 0.75;
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function appendLineTo(targetId, text, cls) {
+      const line = document.createElement("div");
+      line.className = "line " + (cls || "");
+      line.textContent = text;
+
+      document.getElementById(targetId).appendChild(line);
+
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+      });
+    }
+
+    function clearSectionOutput() {
+      const sectionOutput = document.getElementById("sectionOutput");
+
+      sectionOutput.innerHTML = "";
+      sectionOutput.classList.remove("replacing");
+
+      void sectionOutput.offsetWidth;
+
+      sectionOutput.classList.add("replacing");
+
+      window.scrollTo({
+        top: sectionOutput.getBoundingClientRect().top + window.scrollY - 160,
+        behavior: "smooth"
+      });
+    }
+
+    async function renderLines(targetId, lines) {
+      for (const line of lines) {
+        appendLineTo(targetId, line[0], line[1]);
+        await sleep(line[2] * TEXT_DELAY_MULTIPLIER);
+      }
+    }
+
+    async function startMusic() {
+      const music = document.getElementById("bgMusic");
+
+      if (!music) {
+        return;
+      }
+
+      music.volume = 0.45;
+      music.currentTime = 0;
+
       try {
         await music.play();
-      } catch (e) {
-        console.log("Music autoplay blocked:", e);
+      } catch (error) {
+        console.log("Music playback was blocked or failed:", error);
       }
-    });
+    }
+
+    function startDioVideo() {
+      const video = document.getElementById("dioVideo");
+      const placeholder = document.getElementById("videoPlaceholder");
+
+      if (!video) {
+        return;
+      }
+
+      video.currentTime = 0;
+
+      video.play().catch(error => {
+        console.log("Dio video playback failed:", error);
+
+        if (placeholder) {
+          placeholder.classList.remove("hidden");
+        }
+      });
+    }
+
+    function waitForContinue(buttonText) {
+      return new Promise(resolve => {
+        const continueArea = document.getElementById("continueArea");
+        const continueButton = document.getElementById("continueButton");
+
+        continueButton.textContent = buttonText;
+        continueArea.classList.remove("hidden");
+
+        continueButton.onclick = () => {
+          continueArea.classList.add("hidden");
+          continueButton.onclick = null;
+          resolve();
+        };
+
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: "smooth"
+        });
+      });
+    }
+
+    async function runDossier() {
+      document.getElementById("status").textContent = "STATUS: DECRYPTING... ゴゴゴ";
+
+      await renderLines("fixedHeaderOutput", fixedHeaderLines);
+
+      await waitForContinue("CONTINUE DECRYPTING ゴ");
+
+      for (const section of dossierSections) {
+        clearSectionOutput();
+        await renderLines("sectionOutput", section.lines);
+        await waitForContinue("CONTINUE DECRYPTING ゴ");
+      }
+
+      clearSectionOutput();
+      await renderLines("sectionOutput", finalSectionLines);
+
+      document.getElementById("status").textContent = "STATUS: FINAL TRANSMISSION UNLOCKED";
+
+      await waitForContinue("ОТРИМАТИ ФІНАЛЬНУ ПЕРЕДАЧУ ゴ");
+
+      document.getElementById("finalBlock").classList.remove("hidden");
+
+      startDioVideo();
+
+      await sleep(900);
+
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+      });
+    }
+
+    async function startDossier() {
+      if (alreadyStarted) {
+        return;
+      }
+
+      alreadyStarted = true;
+
+      await startMusic();
+
+      document.getElementById("startScreen").classList.add("hidden");
+      document.getElementById("fileScreen").classList.remove("hidden");
+
+      runDossier();
+    }
+
+    window.startDossier = startDossier;
   </script>
 </body>
 </html>
